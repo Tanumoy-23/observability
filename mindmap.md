@@ -1,9 +1,5 @@
+## 🧩 4️⃣ Mindmap – Observability Plan
 
----
-
-## 🧩 4️⃣ **Mindmap – Observability Plan**
-
-```markdown
 ```mermaid
 mindmap
   root((Observability Plan))
