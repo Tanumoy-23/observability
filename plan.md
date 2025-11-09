@@ -1,13 +1,11 @@
+```mermaid
 graph TD
-
   subgraph Client
     U["User / Caller"]
   end
-
   subgraph Edge
     GW["Envoy/Istio Gateway<br/>injects x-request-id + traceparent<br/>JSON access log"]
   end
-
   subgraph Mesh
     SA["Service A (OTel SDK)"]
     SB["Service B (OTel SDK)"]
@@ -16,14 +14,12 @@ graph TD
     SE["Service E (OTel SDK)"]
     IST["Envoy sidecars<br/>(ALS + Tracing)"]
   end
-
   subgraph Telemetry
     OTel["OpenTelemetry Collector / Data Prepper"]
     DP["Data Prepper<br/>(trace/log pipelines)"]
     OS["OpenSearch<br/>Logs + Trace Analytics"]
     Dash["OpenSearch Dashboards<br/>Alerts + SLOs"]
   end
-
   U -->|"HTTP/gRPC"| GW -->|"traceparent + x-request-id"| SA --> SB --> SC --> SD --> SE
   IST -.->|"ALS (access logs)"| OTel
   SA -.->|"OTLP traces/logs"| OTel
